@@ -1,129 +1,660 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>가히의 앵무새 병원 🦜</title>
-    <meta name="description" content="전국의 앵무새 전문 진료 병원을 찾아보세요">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6446265269346794" crossorigin="anonymous"></script>
-    <link href="parrot-hospitals/style.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가히의 만물상 🧪</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6446265269346794"
+     crossorigin="anonymous"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #faf8f4;
+    --card-bg: #ffffff;
+    --text: #2d2a26;
+    --text-sub: #7a756d;
+    --accent: #ff6b35;
+    --accent2: #6c5ce7;
+    --accent3: #00b894;
+    --warm: #fff3e0;
+    --border: #ece8e1;
+    --success: #00b894;
+    --tag-bg: #f8f9fa;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 배경 데코 */
+  .bg-deco {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .bg-deco .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: float 20s ease-in-out infinite;
+  }
+  .blob:nth-child(1) { width: 400px; height: 400px; background: var(--accent); top: -100px; right: -100px; }
+  .blob:nth-child(2) { width: 300px; height: 300px; background: var(--accent2); bottom: 10%; left: -50px; animation-delay: -7s; }
+  .blob:nth-child(3) { width: 250px; height: 250px; background: var(--accent3); top: 40%; right: 10%; animation-delay: -14s; }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.05); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* 헤더 */
+  header {
+    padding: 16px 0 24px;
+    text-align: center;
+  }
+
+  .title-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-family: 'Gaegu', cursive;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    transform-origin: center;
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  h1 {
+    font-family: 'Gaegu', cursive;
+    font-size: clamp(48px, 8vw, 72px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    animation: slideUp 0.8s ease both;
+    animation-delay: 0.2s;
+  }
+
+  h1 .emoji-wave {
+    display: inline-block;
+    animation: wave 2s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(14deg); }
+    30% { transform: rotate(-8deg); }
+    40% { transform: rotate(14deg); }
+    50% { transform: rotate(-4deg); }
+    60% { transform: rotate(10deg); }
+    70% { transform: rotate(0deg); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: var(--text-sub);
+    margin-top: 12px;
+    font-weight: 300;
+    animation: slideUp 0.8s ease both;
+    animation-delay: 0.4s;
+  }
+
+  .subtitle em {
+    font-style: normal;
+    background: linear-gradient(120deg, transparent 0%, #fff3cd 30%, #fff3cd 70%, transparent 100%);
+    padding: 2px 0;
+  }
+
+  /* 카운터 */
+  .counter {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+    animation: slideUp 0.8s ease both;
+    animation-delay: 0.5s;
+  }
+
+  .counter-item {
+    text-align: center;
+  }
+
+  .counter-num {
+    font-family: 'Gaegu', cursive;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .counter-label {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: -2px;
+  }
+
+  /* 카드 그리드 */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s ease both;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:nth-child(1) { animation-delay: 0.6s; }
+  .card:nth-child(2) { animation-delay: 0.7s; }
+  .card:nth-child(3) { animation-delay: 0.8s; }
+  .card:nth-child(4) { animation-delay: 0.9s; }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    border-color: rgba(0,0,0,0.05);
+  }
+
+  /* 카드 헤더 (기존 카드 영역) */
+  .card-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 전체 링크 오버레이 */
+  .card-link-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+    background: var(--tag-bg);
+    transition: transform 0.3s;
+  }
+  
+  .card:hover .card-icon { transform: scale(1.05); }
+
+  .card:nth-child(1) .card-icon { background: #fff0e8; }
+  .card:nth-child(2) .card-icon { background: #e8f8ee; }
+  .card:nth-child(3) .card-icon { background: #ede8ff; }
+  .card:nth-child(4) .card-icon { background: #e0f2f1; }
+
+  .card-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    background: var(--tag-bg);
+    color: var(--text-sub);
+  }
+  
+  .card-tag.fire { background: #ffe8d6; color: #c75000; }
+
+  .card-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 2; /* 링크보다 위 */
+    position: relative;
+  }
+
+  .card-arrow {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-sub);
+    transition: all 0.3s;
+  }
+
+  .card:hover .card-arrow {
+    background: var(--text);
+    color: white;
+  }
+
+  /* TMI 버튼 */
+  .tmi-btn {
+    font-size: 11px;
+    color: var(--text-sub);
+    background: rgba(0,0,0,0.03);
+    border: none;
+    padding: 4px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  
+  .tmi-btn:hover {
+    background: rgba(0,0,0,0.08);
+    color: var(--text);
+  }
+  
+  .tmi-btn svg {
+    width: 12px; height: 12px;
+    transition: transform 0.3s;
+  }
+  
+  /* 카드 열렸을 때 */
+  .card.open .tmi-btn {
+    background: var(--accent);
+    color: white;
+  }
+  .card.open .tmi-btn svg { transform: rotate(180deg); }
+
+  /* 상세 내용 (아코디언) */
+  .card-detail {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: #fdfdfd;
+    border-top: 1px dashed var(--border);
+  }
+
+  .card.open .card-detail {
+    max-height: 500px; /* 충분히 크게 */
+    opacity: 1;
+    padding: 24px;
+  }
+
+  .detail-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+
+  .detail-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    white-space: pre-line;
+  }
+
+  /* FAQ 섹션 */
+  .faq {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    animation: slideUp 0.8s ease both;
+    animation-delay: 1s;
+  }
+
+  .faq-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .faq-item {
+    margin-bottom: 16px;
+  }
+
+  .faq-q {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .faq-a {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.5;
+  }
+
+  /* 푸터 */
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-msg {
+    font-family: 'Gaegu', cursive;
+    font-size: 16px;
+    color: var(--text-sub);
+  }
+
+  .footer-msg .heart {
+    display: inline-block;
+    color: #e74c3c;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--text-sub);
+    opacity: 0.5;
+    margin-top: 4px;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.25); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+  }
+
+  /* 반응형 */
+  @media (max-width: 600px) {
+    .container { padding: 40px 20px; }
+    .card-header { padding: 16px; }
+    .card-icon { width: 44px; height: 44px; font-size: 22px; }
+    .card-title { font-size: 18px; }
+    .card-desc { display: none; } /* 모바일에서 설명 숨기고 제목만 */
+    .mobile-desc { display: block; font-size: 12px; color: var(--text-sub); margin-top: 4px; white-space: normal; }
+    .card-detail { padding: 16px; }
+  }
+  @media (min-width: 601px) {
+    .mobile-desc { display: none; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🦜 가히의 앵무새 병원</h1>
-            <p>전국 앵무새 진료 병원 안내</p>
-        </header>
 
-        <section class="search-section">
-            <label for="searchInput">병원 검색</label>
-            <input type="text" class="search-input" id="searchInput" placeholder="병원 이름 또는 주소를 입력해주세요" onkeyup="filterHospitals()">
-        </section>
+<div class="bg-deco">
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
 
-        <main id="hospitalList" class="hospital-list">
-            <div class="empty-state">
-                <div class="emoji">🦜</div>
-                <p>병원 정보를 불러오는 중...</p>
-            </div>
-        </main>
+<div class="container">
+  <header>
+    <div class="title-badge">심심풀이 제조소</div>
+    <h1>가히의 만물상 <span class="emoji-wave">🧪</span></h1>
+    <p class="subtitle">"이거 만들면 <em>재밌겠다</em>" 싶을 때 뚝딱 만든 것들</p>
+
+    <div class="counter">
+      <div class="counter-item">
+        <div class="counter-num">4</div>
+        <div class="counter-label">오픈 완료</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-num">∞</div>
+        <div class="counter-label">아이디어 보관함</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-num">∞</div>
+        <div class="counter-label">앞으로 만들 것</div>
+      </div>
     </div>
+  </header>
+
+  <div class="cards">
+    <!-- 1. 생일 촛불 계산기 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🎂</div>
+        <div class="card-body">
+          <span class="card-tag fire">🔥 바로 써보기</span>
+          <div class="card-title">How many candles?</div>
+          <div class="card-desc">생일 케이크에 촛불 몇 개 꽂아야 하는지 진지하게 계산해 드립니다.</div>
+          <div class="mobile-desc">생일 케이크 촛불 개수 계산기</div>
+        </div>
+        <div class="card-actions">
+          <button class="tmi-btn" onclick="toggleTmi(this)">비하인드 썰 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <a href="https://yoongahee.com/how-many-candles" class="card-link-overlay"></a>
+      </div>
+      <div class="card-detail">
+        <span class="detail-badge">Behind Story 🧐</span>
+        <div class="detail-text">
+          친구 생일 파티에서 케이크에 초를 꽂으려는데, "야, 만 나이로 해야 돼?" "아니, 한국 나이지!" 하며 옥신각신하다가 결국 촛농이 케이크에 떨어지는 참사를 겪었습니다.
+          <br>
+          그날 결심했죠. "다시는 촛불 개수로 싸우게 두지 않겠다."
+          이 앱은 생년월일만 입력하면 <strong>만 나이, 연 나이</strong>를 깔끔하게 계산해서 필요한 큰 초와 작은 초의 개수를 알려줍니다. 심지어 헷갈리는 '빠른 년생' 논란까지 종결시킬 수 있습니다.
+          <br>
+          가장 심플하지만, 가장 확실한 파티 필수템! 이제 고민 말고 계산기만 켜세요.
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 영양정보표 만들기 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏷️</div>
+        <div class="card-body">
+          <span class="card-tag fire">🔥 바로 써보기</span>
+          <div class="card-title">영양정보표 만들어 드림</div>
+          <div class="card-desc">과자 뒷면에 붙이는 그거! 자영업자 필수템</div>
+          <div class="mobile-desc">식품 영양성분 스티커 제작 도구</div>
+        </div>
+        <div class="card-actions">
+          <button class="tmi-btn" onclick="toggleTmi(this)">비하인드 썰 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <a href="https://yoongahee.com/nutrition" class="card-link-overlay"></a>
+      </div>
+      <div class="card-detail">
+        <span class="detail-badge">Behind Story 🧐</span>
+        <div class="detail-text">
+          부각을 파는 친구가 엑셀로 영양성분을 계산하느라 머리를 쥐어뜯는 모습을 보고 만들었습니다.
+          "이거 그냥 재료 그람(g)수만 넣으면 알아서 계산해주는 거 없어?" 라는 한탄이 시작이었죠.
+          <br>
+          실제 판매용 스티커 규격에 맞춰 출력까지 가능하게 만들었습니다.
+          <br>
+          초기 버전은 디자인이 최악이었지만... 지금은 꽤 쓸만해졌습니다. 소상공인 사장님들의 칼퇴를 응원합니다!
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 신두리 지도 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🗺️</div>
+        <div class="card-body">
+          <span class="card-tag fire">🔥 바로 써보기</span>
+          <div class="card-title">태안 현지인의 신두리 지도</div>
+          <div class="card-desc">직접 가본 곳만 모았습니다. 광고 없는 청정 지도</div>
+          <div class="mobile-desc">태안 신두리 해변 맛집/카페 지도</div>
+        </div>
+        <div class="card-actions">
+          <button class="tmi-btn" onclick="toggleTmi(this)">비하인드 썰 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <a href="https://yoongahee.com/sinduri-map" class="card-link-overlay"></a>
+      </div>
+      <div class="card-detail">
+        <span class="detail-badge">Behind Story 🧐</span>
+        <div class="detail-text">
+          태안 신두리에 놀러 온 지인들이 "맛집 어디야?"라고 물을 때마다 매번 설명하기 귀찮아서 만들었습니다.
+          포털 사이트에 검색하면 나오는 흔한 광고 맛집 말고, 현지인이 슬리퍼 신고 가는 진짜 맛집과 분위기 좋은 카페만 엄선했습니다.
+          <br>
+          제가 직접 가보고 맛없으면 지도에서 과감히 삭제합니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 앵무새 병원 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🦜</div>
+        <div class="card-body">
+          <span class="card-tag fire">🔥 바로 써보기</span>
+          <div class="card-title">앵무새 병원 모음집</div>
+          <div class="card-desc">전국 조류 진료 가능 동물병원 지도</div>
+          <div class="mobile-desc">아픈 앵무새를 위한 병원 찾기</div>
+        </div>
+        <div class="card-actions">
+          <button class="tmi-btn" onclick="toggleTmi(this)">비하인드 썰 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="card-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <a href="https://yoongahee.com/parrot-hospitals/" class="card-link-overlay"></a>
+      </div>
+      <div class="card-detail">
+        <span class="detail-badge">Behind Story 🧐</span>
+        <div class="detail-text">
+          반려조와 함께하는 집사라면 공감하실 겁니다. 아이가 아픈데 갈 수 있는 병원이 없어서 발만 동동 구르던 그 순간을요.
+          일반 동물병원은 조류 진료를 안 하는 경우가 많아서, 급할 때 병원 찾기가 정말 하늘의 별 따기입니다.
+          <br>
+          그래서 전국의 조류 진료 가능한 특수 동물병원을 싹 다 긁어모았습니다.
+          위치, 진료 시간까지 한눈에 볼 수 있도록 정리했으니, 전국의 앵무새 집사님들, 이제 당황하지 말고 여기서 바로 검색하세요!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 섹션 (애드센스 승인용 텍스트 확보) -->
+  <div class="faq">
+    <h3 class="faq-title">자주 묻는 질문 💬</h3>
+    <div class="faq-item">
+      <div class="faq-q">Q. 이 사이트의 서비스들은 다 무료인가요?</div>
+      <div class="faq-a">A. 네, 100% 무료입니다. 제가 필요해서 만든 김에 공유하는 거라 돈 받을 생각은 없습니다. 다만 서버비 충당을 위해 귀여운 광고가 조금 붙어있을 수 있어요.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q. 앱으로 설치해야 하나요?</div>
+      <div class="faq-a">A. 아니요! 번거롭게 설치할 필요 없는 웹 서비스입니다. 즐겨찾기 해두시고 필요할 때마다 접속해서 쓰시면 됩니다. 용량 걱정 NO!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q. 새로운 기능 제안을 하고 싶어요!</div>
+      <div class="faq-a">A. 언제든 환영입니다. "이런 기능 있으면 좋겠다" 싶은 게 있다면 yoongahee@gmail.com (가상의 메일주소)으로 보내주세요. 제가 꽂히면 밤새서라도 만들어 드립니다.</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-msg">만드는 재미로 사는 중 <span class="heart">♥</span></div>
+    <div class="footer-copy">© 2025 가히. 심심할 때마다 업데이트됩니다.</div>
+  </footer>
+</div>
+
+<script>
+  function toggleTmi(btn) {
+    // 링크 이동 방지 (상위 요소로 이벤트 전파 중단)
+    event.preventDefault();
+    event.stopPropagation();
     
-    <a class="fab-map" href="https://naver.me/GzE3FDpR" target="_blank">
-        🗺️ 지도에서 보기
-    </a>
+    // 현재 카드 찾기
+    const card = btn.closest('.card');
+    
+    // 열고 닫기
+    const isOpen = card.classList.contains('open');
+    
+    // (선택) 다른 카드들은 닫기 - 깔끔하게 하나만 보이도록
+    document.querySelectorAll('.card').forEach(c => {
+      c.classList.remove('open');
+    });
 
-    <script>
-        let hospitalsData = [];
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (!isOpen) {
+      card.classList.add('open');
+    }
+  }
+</script>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('parrot-hospitals/hospitals.json')
-                .then(response => response.json())
-                .then(data => {
-                    hospitalsData = data.hospitals;
-                    renderHospitals(hospitalsData);
-                })
-                .catch(error => {
-                    console.error('Error loading the hospital data:', error);
-                    document.getElementById('hospitalList').innerHTML = `
-                        <div class="empty-state">
-                            <div class="emoji">😢</div>
-                            <p>데이터를 불러올 수 없습니다.</p>
-                        </div>
-                    `;
-                });
-        });
-
-        function renderHospitals(hospitals) {
-            const hospitalList = document.getElementById('hospitalList');
-            hospitalList.innerHTML = '';
-
-            if (hospitals.length === 0) {
-                hospitalList.innerHTML = `
-                    <div class="empty-state">
-                        <div class="emoji">🔍</div>
-                        <p>검색 결과가 없습니다</p>
-                    </div>
-                `;
-                return;
-            }
-
-            // 즐겨찾기된 병원 먼저 정렬
-            const sortedHospitals = [...hospitals].sort((a, b) => {
-                return (favorites.includes(b.name) - favorites.includes(a.name));
-            });
-
-            sortedHospitals.forEach((hospital, index) => {
-                const isFavorite = favorites.includes(hospital.name) ? 'active' : '';
-
-                const divCard = document.createElement('div');
-                divCard.className = 'card';
-                divCard.style.animationDelay = `${index * 0.05}s`;
-                
-                const divCardBody = document.createElement('div');
-                divCardBody.className = 'card-body';
-                divCardBody.innerHTML = `
-                    ${hospital.is24hour ? '<span class="badge">24시 진료</span>' : ''}
-                    <h5 class="card-title">${hospital.name}</h5>
-                    <p class="card-text">
-                        📍 ${hospital.address}<br>
-                        📞 ${hospital.phone}
-                    </p>
-                    <div class="btn-group">
-                        <a href="tel:${hospital.phone}" class="btn btn-call">📞 전화하기</a>
-                        <a href="${hospital.map}" target="_blank" class="btn btn-map">🗺️ 지도보기</a>
-                    </div>
-                    <button class="favorite ${isFavorite}" onclick="toggleFavorite('${hospital.name}')" title="즐겨찾기">
-                        ${isFavorite ? '★' : '☆'}
-                    </button>
-                `;
-
-                divCard.appendChild(divCardBody);
-                hospitalList.appendChild(divCard);
-            });
-        }
-
-        function toggleFavorite(hospitalName) {
-            if (favorites.includes(hospitalName)) {
-                favorites = favorites.filter(name => name !== hospitalName);
-            } else {
-                favorites.unshift(hospitalName);
-            }
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            renderHospitals(hospitalsData);
-        }
-
-        function filterHospitals() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const filteredHospitals = hospitalsData.filter(hospital => 
-                hospital.name.toLowerCase().includes(searchInput) || 
-                hospital.address.toLowerCase().includes(searchInput) || 
-                (hospital.address_sido && hospital.address_sido.toLowerCase().includes(searchInput)) || 
-                (hospital.address_sgg && hospital.address_sgg.toLowerCase().includes(searchInput)) || 
-                (hospital.address_umd && hospital.address_umd.toLowerCase().includes(searchInput))
-            );
-            renderHospitals(filteredHospitals);
-        }
-    </script>
 </body>
 </html>
